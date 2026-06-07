@@ -10,33 +10,6 @@ Welcome to Part 3 of the HBnB Project. In this phase, the backend application is
 
 ---
 
-## Project Structure
-
-part3/
-├── app/
-│   ├── __init__.py           # Application Factory & Extension Initialization
-│   ├── api/
-│   │   └── v1/
-│   │       ├── auth.py       # JWT Login and Token Management
-│   │       ├── users.py      # Secure User Management Endpoints
-│   │       └── amenities.py  # Admin-only Amenity Management
-│   ├── models/
-│   │   ├── base.py           # Shared BaseModel class with ID & Timestamps
-│   │   ├── user.py           # User Model with Password Hashing
-│   │   ├── place.py          # Place Model & place_amenity Association Table
-│   │   ├── review.py         # Review Model
-│   │   └── amenity.py        # Amenity Model
-│   ├── persistence/
-│   │   ├── sqlalchemy_repository.py  # Generic Database CRUD Repository
-│   │   └── user_repository.py        # User-specific Database Queries
-│   └── services/
-│       └── facade.py         # Refactored Service Layer linking App to DB
-├── config.py                 # Development & Production Configuration Environment
-├── init_db.sql               # Pure SQL Script for Database Schema & Seed Data
-└── run.py                    # Application Entry Point
-
----
-
 ## Database Schema (ER Diagram)
 
 The database structure and relationships are modeled as follows:
