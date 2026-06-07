@@ -89,3 +89,18 @@ erDiagram
     PLACES ||--o{ REVIEWS : "has"
     PLACES ||--o{ PLACE_AMENITY : "contains"
     AMENITIES ||--o{ PLACE_AMENITY : "assigned_to"
+```
+
+---
+
+## Setup & Installation
+
+### 1. Initialize the SQLite Database
+To generate the tables and populate the database with initial seed data (including an administrator account and basic amenities), run the following command in your terminal:
+
+sqlite3 development.db < init_db.sql
+
+### 2. Run the Application
+Start the Flask development server:
+
+python run.py
