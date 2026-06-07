@@ -1,0 +1,37 @@
+from app import db
+from app.persistence.repository import Repository
+
+class SQLAlchemyRepository(Repository):
+    def __init__(self, model):
+        self.model = model
+
+    def add(self, entity):
+        db.session.add(entity)
+        db.session.commit()
+        return entity
+
+    def get(self, entity_id):
+        return self.model.query.get(entity_id)
+
+    def get_all(self):
+        return self.model.query.all()
+
+    def update(self, entity_id, data):
+        entity = self.get(entity_id)
+        if entity:
+            for key, value in data.items():
+                if hasattr(entity, key):
+                    setattr(entity, key, value)
+            db.session.commit()
+        return entity
+
+    def delete(self, entity_id):
+        entity = self.get(entity_id)
+        if entity:
+            db.session.delete(entity)
+            db.session.commit()
+            return True
+        return False
+
+    def get_by_attribute(self, attr_name, value):
+        return self.model.query.filter((getattr(self.model, attr_name) == value)).first()
